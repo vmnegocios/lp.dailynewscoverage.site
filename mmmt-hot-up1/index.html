@@ -102,84 +102,72 @@
   </div>
 
 	<script>
-	// Início do Script de Compra Automática para Hotmart
-	document.addEventListener('DOMContentLoaded', () => {
-	
-	    console.log('[AUTOPURCHASE] Script iniciado. Preparando para monitorar a página.');
-	
-	    // --- CONFIGURAÇÕES ---
-	    // Seletor para o iframe que a Hotmart cria dinamicamente.
-	    const iframeSelector = '#hotmart-sales-funnel iframe';
-	
-	    // Seletor para o botão de aceite, usando o data-testid que encontramos.
-	    const buyButtonSelector = '[data-testid="funnel-buy-button"]';
-	
-	    // Configurações do monitoramento
-	    const maxAttempts = 100; // Tentar por no máximo 20 segundos (100 tentativas * 200ms)
-	    const checkInterval = 200; // Verificar a cada 200 milissegundos
-	    let attempts = 0;
-	
-	    // --- LÓGICA PRINCIPAL ---
-	
-	    // 1. Inicia o monitoramento para encontrar o iframe da Hotmart.
-	    const monitorIframe = setInterval(() => {
-	        attempts++;
-	        console.log(`[AUTOPURCHASE] Tentativa ${attempts} de encontrar o iframe...`);
-	
-	        const hotmartIframe = document.querySelector(iframeSelector);
-	
-	        // 2. Se o iframe for encontrado, o monitoramento principal para.
-	        if (hotmartIframe) {
-	            console.log('[AUTOPURCHASE] SUCESSO: Iframe da Hotmart encontrado!');
-	            clearInterval(monitorIframe); // Para de procurar o iframe.
-	            
-	            // Inicia a busca pelo botão DENTRO do iframe.
-	            findAndClickButton(hotmartIframe);
-	            return;
-	        }
-	
-	        // 3. Se exceder o número de tentativas, para tudo.
-	        if (attempts >= maxAttempts) {
-	            console.error('[AUTOPURCHASE] ERRO: Iframe da Hotmart não foi encontrado na página após 20 segundos. O script será encerrado.');
-	            clearInterval(monitorIframe);
-	        }
-	    }, checkInterval);
-	
-	
-	    // 4. Função para encontrar e clicar no botão dentro do iframe.
-	    function findAndClickButton(iframeElement) {
-	        try {
-	            // Acessa o documento HTML que vive dentro do iframe.
-	            const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-	            
-	            if (!iframeDocument) {
-	                console.error('[AUTOPURCHASE] ERRO: Não foi possível acessar o conteúdo do iframe.');
-	                return;
-	            }
-	
-	            // Procura pelo botão de aceite dentro do iframe.
-	            const buyButton = iframeDocument.querySelector(buyButtonSelector);
-	
-	            if (buyButton) {
-	                console.log('[AUTOPURCHASE] SUCESSO: Botão de aceite encontrado dentro do iframe!');
-	                console.log('[AUTOPURCHASE] Executando clique...');
-	                
-	                buyButton.click(); // AÇÃO FINAL!
-	
-	                console.log('[AUTOPURCHASE] Ação de clique executada com sucesso. Processo finalizado.');
-	            } else {
-	                // Se o iframe carregou mas o botão não está lá, informa o erro.
-	                console.error('[AUTOPURCHASE] ERRO: O botão de aceite não foi encontrado dentro do iframe. Verifique se o seletor está correto ou se a Hotmart mudou o layout.');
-	            }
-	
-	        } catch (error) {
-	            console.error('[AUTOPURCHASE] ERRO: Ocorreu um erro ao tentar interagir com o iframe. Isso pode ser uma restrição de segurança.', error);
-	        }
-	    }
-	});
-	// Fim do Script
+// Início do Script de Compra Automática para Hotmart (v2 - Estratégia do Vigia Paciente)
+document.addEventListener('DOMContentLoaded', () => {
+
+    console.log('[AUTOPURCHASE v2] Script iniciado. Iniciando monitoramento inteligente.');
+
+    // --- CONFIGURAÇÕES ---
+    const iframeSelector = '#hotmart-sales-funnel iframe';
+    const buyButtonSelector = '[data-testid="funnel-buy-button"]';
+    const maxAttempts = 150; // Tentar por no máximo 30 segundos (150 tentativas * 200ms)
+    const checkInterval = 200; // Verificar a cada 200 milissegundos
+    let attempts = 0;
+
+    // --- LÓGICA PRINCIPAL (MONITORAMENTO INTELIGENTE) ---
+    const intelligentMonitor = setInterval(() => {
+        attempts++;
+        console.log(`[AUTOPURCHASE v2] Tentativa de verificação nº ${attempts}...`);
+
+        // Verificação #1: O iframe existe?
+        const hotmartIframe = document.querySelector(iframeSelector);
+        if (!hotmartIframe) {
+            // Se não existe, espera o próximo ciclo. Não é um erro ainda.
+            if (attempts >= maxAttempts) {
+                console.error('[AUTOPURCHASE v2] ERRO: Iframe da Hotmart não encontrado após 30 segundos. Encerrando.');
+                clearInterval(intelligentMonitor);
+            }
+            return; // Sai da tentativa atual e espera a próxima.
+        }
+
+        // Verificação #2: O conteúdo do iframe está acessível?
+        const iframeDocument = hotmartIframe.contentDocument || hotmartIframe.contentWindow.document;
+        if (!iframeDocument) {
+            console.warn('[AUTOPURCHASE v2] Alerta: Iframe encontrado, mas seu conteúdo ainda não está acessível. Aguardando...');
+            if (attempts >= maxAttempts) {
+                console.error('[AUTOPURCHASE v2] ERRO: Conteúdo do Iframe não ficou acessível após 30 segundos. Encerrando.');
+                clearInterval(intelligentMonitor);
+            }
+            return; // Sai da tentativa atual e espera a próxima.
+        }
+
+        // Verificação #3: O botão de aceite está lá?
+        const buyButton = iframeDocument.querySelector(buyButtonSelector);
+        if (buyButton) {
+            // SUCESSO! Todas as condições foram atendidas.
+            console.log('[AUTOPURCHASE v2] SUCESSO: Botão de aceite encontrado e pronto para o clique!');
+            
+            // AÇÃO FINAL
+            console.log('[AUTOPURCHASE v2] Executando clique...');
+            buyButton.click();
+
+            // ENCERRAMENTO
+            console.log('[AUTOPURCHASE v2] Ação de clique executada. Missão cumprida. Monitoramento encerrado.');
+            clearInterval(intelligentMonitor);
+        } else {
+            // Se chegamos até aqui, o botão ainda não foi "desenhado" dentro do iframe.
+            if (attempts >= maxAttempts) {
+                console.error('[AUTOPURCHASE v2] ERRO: O botão de aceite não foi encontrado dentro do iframe após 30 segundos. Encerrando.');
+                clearInterval(intelligentMonitor);
+            }
+        }
+
+    }, checkInterval);
+});
+// Fim do Script
 	</script>
   
 </body>
 </html>
+
 
