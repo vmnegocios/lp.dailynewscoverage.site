@@ -1,0 +1,144 @@
+/* Configurações Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container Principal */
+.container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden; /* <-- ADICIONE ESTA LINHA */
+}
+
+/* Caixa de Aviso Vermelha */
+.warning-box {
+    background-color: #ff0000;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.warning-box p {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+}
+
+/* Barra de Progresso */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.step.completed .circle {
+    background-color: white;
+    color: #d9534f;
+}
+
+.line {
+    width: 40px;
+    height: 2px;
+    background-color: white;
+}
+
+/* Conteúdo Principal de Texto */
+.main-content h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.main-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Botão do Formulário */
+.form-button {
+    display: block;
+    width: 100%;
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 0;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #34495e;
+}
+
+/* Container do widget Hotmart */
+#hotmart-container {
+	position: relative;
+	width: 100%;
+	/* max-width: 420px; <-- ESSA LINHA FOI REMOVIDA PARA CORRIGIR O BUG */
+	height: 420px;
+	margin: 0 auto;
+}
+
+/* Estilo para o iframe do widget */
+#box_hotmart {
+	width: 100%;
+	height: 100%;
+}
+
+/* Cobre o conteúdo com uma camada branca (CORRIGIDO) */
+#cover {
+	position: absolute;
+	top: 215px;
+	left: -25; /* Alinha no início do container pai */
+	width: calc(100% + 50px); /* Ocupa 100% da largura do container pai */
+	height: 100px;
+	background-color: #FFFFFF;
+	z-index: 3;
+}
+
+#cover2 {
+	position: absolute;
+	top: 0px;
+	left: -25; /* Alinha no início do container pai */
+	width: calc(100% + 50px); /* Ocupa 100% da largura do container pai */
+	height: 155px;
+	background-color: #FFFFFF;
+	z-index: 3;
+}
+
+/* A regra de responsividade abaixo não é mais necessária para a largura, pois 100% já resolve. */
+@media (max-width: 768px) {
+	/* Você pode apagar essa parte ou deixar para outras regras no futuro. */
+}
+/* O "}" extra que estava aqui foi removido */
