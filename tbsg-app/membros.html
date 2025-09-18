@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Area</title> <!-- Updated tab title -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>MEN'S HEALTH APP</h1> <!-- Updated and centered header title via existing CSS -->
+    </header>
+
+    <div class="container">
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Modules will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Module data
+        const modulos = [
+            {
+                nome: "Module 01 - Unlock Your Pelvis for MEN",
+                tipo: "Video Classes", 
+                imagem: "img/module-01.png", 
+                videos: [
+                    { title: "1.1. Introduction & Hamstring Strengthening", url: "https://youtu.be/A9UAR0g2MFE" },
+                    { title: "1.2. Finding Flexion in the Lower Back", url: "https://youtu.be/vsoN7odfbZ8" },
+                    { title: "1.3. The Role of the Hip Flexors & Abdominal Muscles for Pelvis Orientation", url: "https://youtu.be/6cwOdPcdb4c" },
+                    { title: "1.4. Introduction to Hip Internal & External Rotation", url: "https://youtu.be/BbDH70kDc5Q" },
+                    { title: "1.5. Movements to Promote Internal Rotation & Have better Sexual Function", url: "https://youtu.be/V_TW3gituf4" },
+                    { title: "1.6. Improving Hip & Femoral Thigh Bone Internal Rotation", url: "https://youtu.be/bS5aw5SHQAE" },
+                    { title: "1.7. Advanced Hip Internal Rotation Techniques", url: "https://youtu.be/e2r3_1ir6Tc" },
+                    { title: "1.8. Pelvic Floor Strengthening Exercises", url: "https://youtu.be/fHws1jWU_ew" },
+                    { title: "1.9. Dissociation, Association & our Abilities to React", url: "https://youtu.be/5CsRij5XUQU" },
+                    { title: "1.10. Muscle Strength, Tension & Tightness", url: "https://youtu.be/xuttgPHYKyg" },
+                    { title: "1.11. Engage & Release the Pelvic Floor", url: "https://youtu.be/zsZkxH8C1O4" },
+                    { title: "1.12. From Stress & Trauma to Love & Connection", url: "https://youtu.be/WQu0gfMPsSU" }
+                ]
+            },
+            {
+                nome: "Module 02 - A Pill-Free Approach to Overcoming Premature Ejaculation",
+                tipo: "Video Classes",
+                imagem: "img/module-02.png", 
+                videos: [
+                    { title: "2.1. Introduction", url: "https://youtu.be/PCdShXjLQ1A" },
+                    { title: "2.2. What Is Premature Ejaculation", url: "https://youtu.be/5r1UYrNGMss" },
+                    { title: "2.3. The Subconscious", url: "https://youtu.be/9cDE8wqvm6s" },
+                    { title: "2.4. Part One Exercises and Techniques", url: "https://youtu.be/ffdbAW-Kva4" },
+                    { title: "2.5. Advanced Control Techniques", url: "https://youtu.be/1j3suO3uwPM" },
+                    { title: "2.6. The Clearance Process Hypnotic Audio", url: "https://youtu.be/6o9dqOZvqxc" },
+                    { title: "2.7. Mental Training for Lasting Performance", url: "https://youtu.be/ZuprsMELDkc" },
+                    { title: "2.8. The Confidence Booster Hypnotic Audio", url: "https://youtu.be/6kg1ozmIHFM" },
+                    { title: "2.9. Getting The Most From The Course", url: "https://youtu.be/zWmgRTv9NOg" }
+                ]
+            },
+            {
+                nome: "Module 03 - How to Deal with Porn Addiction - Quit Porn and Masturbation",
+                tipo: "Video Classes",
+                imagem: "img/module-03.png", 
+                videos: [
+                    { title: "3.1. Introduction to Porn Addiction Recovery", url: "https://youtu.be/1cMKcFBeZ6U" },
+                    { title: "3.2. Understanding the Problem", url: "https://youtu.be/5jw6050_pdc" },
+                    { title: "3.3. Purpose of this Course", url: "https://youtu.be/-rQ1BhnQO58" },
+                    { title: "3.4. Porn and Human Brain", url: "https://youtu.be/xiccnhhsW9s" },
+                    { title: "3.5. Interesting Facts about Porn Addiction", url: "https://youtu.be/vnxwgl3y2V8" },
+                    { title: "3.6. How to know whether or not you are porn addict", url: "https://youtu.be/TUECziv0vGg" },
+                    { title: "3.7. Why you should quit porn", url: "https://youtu.be/TyBanEn0huA" },
+                    { title: "3.8. Breaking the Cycle", url: "https://youtu.be/mPz8BPZe8sU" },
+                    { title: "3.9. Rules to Follow", url: "https://youtu.be/EZNs3WZNVzc" },
+                    { title: "3.10. Steps to Quit Porn First 4 Steps", url: "https://youtu.be/5JUcCha0_Fw" },
+                    { title: "3.11. Building New Habits", url: "https://youtu.be/k99Kk6ARtOw" },
+                    { title: "3.12. Habit 101 Part a", url: "https://youtu.be/ixCHkW-8c1A" },
+                    { title: "3.13. Habit 101 Part b", url: "https://youtu.be/hX-ZCOEcy0U" },
+                    { title: "3.14. Overcoming Urges and Triggers", url: "https://youtu.be/DOWp6F2l5ug" },
+                    { title: "3.15. Creating a Support System", url: "https://youtu.be/g6bZIg2l0pw" },
+                    { title: "3.16. Expectations During Recovery", url: "https://youtu.be/SuGg112DbrU" },
+                    { title: "3.17. Never Going Back Again!", url: "https://youtu.be/tTwGV_4jIp4" },
+                    { title: "3.18. Maintaining Long-term Success", url: "https://youtu.be/xdEx4VVV_M8" },
+                    { title: "3.19. Porn Free Sample Day", url: "https://youtu.be/ySWih_ebXR0" },
+                    { title: "3.20. Tools & Resources For Porn Addicts", url: "https://youtu.be/cym8SXz-_5c" }
+                ]
+            }
+            // Add more modules here as needed
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modulesGrid = document.getElementById("modulesGrid");
+            if (modulesGrid) {
+                modulos.forEach(modulo => {
+                    const moduleCard = document.createElement("div");
+                    moduleCard.classList.add("module-card");
+
+                    let link = "modulo.html";
+                    let params = `name=${encodeURIComponent(modulo.nome)}`;
+
+                    if (modulo.tipo === "Ebook") {
+                        params += `&type=ebook&src=${encodeURIComponent(modulo.src)}`;
+                    } else if (modulo.tipo === "Video Classes") {
+                        params += `&type=video&videos=${encodeURIComponent(JSON.stringify(modulo.videos))}`;
+                    }
+
+                    moduleCard.innerHTML = `
+                        <div class="module-image-container">
+                            <img src="${modulo.imagem || "img/placeholder.svg"}" alt="${modulo.nome}">
+                        </div>
+                        <a href="${link}?${params}" class="btn-access">Access Content</a>
+                    `;
+                    modulesGrid.appendChild(moduleCard);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
