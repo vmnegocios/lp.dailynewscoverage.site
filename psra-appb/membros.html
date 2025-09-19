@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Sal Rosa Adelgazante - Área de Miembros</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Protocolo Sal Rosa Adelgazante</h1>
+    </header>
+
+    <div class="container">
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Modules will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Module data
+        const modulos = [
+            {
+                nome: "Módulo 01: Protocolo Sal Rosa Adelgazante",
+                tipo: "Ebook", 
+                imagem: "img/PSRA-module01.png", 
+                src: "https://protocolo-sal-rosa-adelg-13ckakm.gamma.site/"
+            },
+            {
+                nome: "Módulo 02: El Ritual Afinador de Cintura",
+                tipo: "Ebook",
+                imagem: "img/PSRA-module02.png", 
+                src: "https://el-ritual-afinador-de-ci-14q2gqb.gamma.site/"
+            },
+            {
+                nome: "Módulo 03: Adiós, Celulitis",
+                tipo: "Ebook",
+                imagem: "img/PSRA-module03.png", 
+                src: "https://adios-celulitis-g9empn3.gamma.site/"
+            }
+            // Add more modules here as needed
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modulesGrid = document.getElementById("modulesGrid");
+            if (modulesGrid) {
+                modulos.forEach(modulo => {
+                    const moduleCard = document.createElement("div");
+                    moduleCard.classList.add("module-card");
+
+                    let link = "modulo.html";
+                    let params = `name=${encodeURIComponent(modulo.nome)}`;
+
+                    if (modulo.tipo === "Ebook") {
+                        params += `&type=ebook&src=${encodeURIComponent(modulo.src)}`;
+                    } else if (modulo.tipo === "Video Classes") {
+                        params += `&type=video&videos=${encodeURIComponent(JSON.stringify(modulo.videos))}`;
+                    }
+
+                    moduleCard.innerHTML = `
+                        <div class="module-image-container">
+                            <img src="${modulo.imagem || "img/placeholder.svg"}" alt="${modulo.nome}">
+                        </div>
+                        <a href="${link}?${params}" class="btn-access">Acceder al Contenido</a>
+                    `;
+                    modulesGrid.appendChild(moduleCard);
+                });
+            }
+        });
+    </script>
+
+    <div class="reembolso-container">
+        <a href="reembolso/index.html" class="btn-reembolso">SOLICITAR REEMBOLSO</a>
+    </div>
+</body>
+</html>
+
