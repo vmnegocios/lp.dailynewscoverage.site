@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health</title>
+  
+	<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+	<link rel="preload" href="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/68cecf461563ea2ce059a944/v4/player.js" as="script">
+	<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+	<link rel="preload" href="https://cdn.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/68cecdf71563ea2ce059a807/main.m3u8" as="fetch">
+	<link rel="dns-prefetch" href="https://cdn.converteai.net">
+	<link rel="dns-prefetch" href="https://scripts.converteai.net">
+	<link rel="dns-prefetch" href="https://images.converteai.net">
+	<link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+	<script
+	  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+	  data-utmify-prevent-xcod-sck
+	  data-utmify-prevent-subids
+	  data-utmify-ignore-iframe
+	  data-utmify-is-cartpanda
+	  async
+	  defer
+	></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+      body {
+          font-family: 'Poppins', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #fff;
+      }
+      .header-tag {
+          background-color: #c00;
+          color: white;
+          padding: 10px 0;
+          font-size: 32px;
+          font-weight: 600;
+          text-align: center;
+      }
+      .header-content {
+          padding: 25px 20px;
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: left;
+      }
+      .main-headline {
+          font-size: 28px;
+          font-weight: 700;
+          margin: 0 0 15px 0;
+          line-height: 1.3;
+      }
+      .main-headline .urgent {
+          color: #c00;
+      }
+      .sub-headline {
+          font-size: 16px;
+          margin: 0 0 15px 0;
+      }
+      .byline {
+          font-size: 12px;
+      }
+      .video-section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+      .comments-container {
+          max-width: 800px;
+          margin: 30px auto;
+          background-color: #f0f2f5; 
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .comments-header {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          text-align: left;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #ddd;
+      }
+
+      .comment {
+          display: flex;
+          align-items: flex-start;
+          padding: 15px 0;
+          border-bottom: 1px solid #e0e0e0;
+      }
+
+      .comment:last-child {
+          border-bottom: none;
+      }
+
+      .comment img {
+          border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          margin-right: 12px;
+      }
+
+      .comment-content {
+          flex: 1;
+      }
+
+      .comment-header {
+          font-weight: 600;
+          font-size: 15px;
+          color: #3A559F; 
+          margin-bottom: 5px;
+      }
+
+      .comment-text {
+          font-size: 14px;
+          color: #050505; 
+          margin-bottom: 10px;
+          line-height: 1.4;
+      }
+      
+      .loading-icon {
+          animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+          from {
+              transform: rotate(0deg);
+          }
+          to {
+              transform: rotate(360deg);
+          }
+      }
+      
+      .load-more-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
+          padding: 20px;
+      }
+
+      #loadMoreBtn {
+          background-color: #3A559F;
+          color: white;
+          font-weight: 600;
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 14px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.3s;
+      }
+
+      #loadMoreBtn:hover {
+          background-color: #2d4373;
+      }
+  </style>
+</head>
+<body>
+  <div class="header-section">
+      <div class="header-tag">Health</div>
+      <div class="header-content">
+          <h1 class="main-headline">
+              <span class="urgent">URGENT:</span> Scientists uncover a natural cure for Memory Loss that can be made at home
+          </h1>
+          <p class="sub-headline">Over 15,000 peoples have already reversed Alzheimer's for less than $45</p>
+          <p class="byline">By <b>Dr. Sunjay Gupta</b></p>
+      </div>
+  </div>
+
+  <div class="video-section">
+      <vturb-smartplayer id="vid-68cecf461563ea2ce059a944" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/68cecf461563ea2ce059a944/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+  </div>
+
+  <div class="comments-container">
+      <div class="comments-header">Comments</div>
+      
+      <div class="comment">
+          <img src="images/1.webp" alt="Meredith Fields">
+          <div class="comment-content">
+              <div class="comment-header">Meredith Fields</div>
+              <div class="comment-text">I'm so glad I watched this till the end. Super happy!!! Thank you, Dr. Sunjay Gupta. As I got older, I started forgetting things birthdays, where I put my purse and I thought I'd end up old and abandoned in a nursing home. But after trying this recipe, I remember everything now, and my memory is better than when I was 20! God bless you!</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/2.webp" alt="Jessica Allen">
+          <div class="comment-content">
+              <div class="comment-header">Jessica Allen</div>
+              <div class="comment-text">I didn't believe it at first, but after I tried it, I saw that it works. I even started remembering my bank password again. Dr. Gupta you rock!!</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/3.webp" alt="Richard Shutter">
+          <div class="comment-content">
+              <div class="comment-header">Richard Shutter</div>
+              <div class="comment-text">My mother has had Alzheimer's for over 5 years. And this honey trick has simply made her recover like never before. Thank you God!</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/4.webp" alt="Steven Sopcak">
+          <div class="comment-content">
+              <div class="comment-header">Steven Sopcak</div>
+              <div class="comment-text">Thank you, Dr Gupta, for changing my life in just a few weeks. I'm so grateful for what you've done it feels like a miracle. I get emotional just thinking about how it actually worked!</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/5.webp" alt="Nancy Cohen">
+          <div class="comment-content">
+              <div class="comment-header">Nancy Cohen</div>
+              <div class="comment-text">I always thought this stuff about improving memory and controlling Alzheimer's was a bunch of nonsense, but I had to eat my words. If I'd known about this earlier, I would've tried it a long time ago!</div>
+          </div>
+      </div>
+      
+      <div class="comment">
+          <img src="images/6.webp" alt="Margy Peet">
+          <div class="comment-content">
+              <div class="comment-header">Margy Peet</div>
+              <div class="comment-text">I thought this was a scam, but it really made my memory super sharp? Unbelievable, thank you my Jesus!!!</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/7.webp" alt="Michael Miller">
+          <div class="comment-content">
+              <div class="comment-header">Michael Miller</div>
+              <div class="comment-text">I tried this honey trick everyone's talking about, and it's working for my mom! I'm gonna recommend it to all my friends and family.</div>
+          </div>
+      </div>
+
+      <div class="comment">
+          <img src="images/8.webp" alt="Jen McConnell">
+          <div class="comment-content">
+              <div class="comment-header">Jen McConnell</div>
+              <div class="comment-text">@LisaKernan this is what I was telling you about it worked for my dad.</div>
+          </div>
+      </div>
+
+
+      <div class="load-more-container">
+          <button id="loadMoreBtn">
+              Show more comments
+          </button>
+      </div>
+
+  </div>
+  
+  <script>
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      loadMoreBtn.addEventListener('click', () => {
+          loadMoreBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" style="margin-right: 8px;"></i>Loading...';
+      });
+  </script>
+</body>
+</html>
