@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienestar</title>
+    <style>
+        /* --- Estilo Geral --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Container Principal do Quiz --- */
+        #quiz-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px 40px;
+            text-align: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .question {
+            display: none; /* Esconde todas as perguntas por padrão */
+        }
+
+        .question.active {
+            display: block; /* Mostra apenas a pergunta ativa */
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: #1c1e21;
+            margin-bottom: 25px;
+        }
+
+        /* --- Botões de Resposta --- */
+        .answers button {
+            background-color: #e7f3ff;
+            color: #1877f2;
+            border: 1px solid #1877f2;
+            border-radius: 8px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .answers button:hover {
+            background-color: #1877f2;
+            color: #ffffff;
+        }
+
+        /* --- Container dos Resultados (Vídeo) --- */
+        #results-container {
+            display: none; /* Escondido por padrão */
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #loading-text {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1c1e21;
+            margin-bottom: 20px;
+        }
+
+        #final-content {
+            display: none; /* Conteúdo final escondido até a "análise" */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #final-content h2 {
+            color: #28a745; /* Verde para sucesso */
+        }
+        
+        #final-content p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        /* --- Estilo para Vídeo Responsivo --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="quiz-container">
+        <div id="question-1" class="question active">
+            <h2>¡Empecemos! ¿Cuál es tu principal objetivo de bienestar en este momento?</h2>
+            <div class="answers">
+                <button onclick="nextQuestion(2)">Tener más energía y disposición en el día a día.</button>
+                <button onclick="nextQuestion(2)">Sentirme más ligera y cómoda con mi cuerpo.</button>
+                <button onclick="nextQuestion(2)">Encontrar un equilibrio en mi rutina, sin estrés.</button>
+                <button onclick="nextQuestion(2)">Todas las anteriores.</button>
+            </div>
+        </div>
+
+        <div id="question-2" class="question">
+            <h2>¿Has intentado otras formas de alcanzar este objetivo (como dietas o rutinas complejas) en el pasado?</h2>
+            <div class="answers">
+                <button onclick="nextQuestion(3)">Sí, varias veces, pero siempre me frustré con los resultados.</button>
+                <button onclick="nextQuestion(3)">Sí, pero me resultó muy difícil mantener la constancia.</button>
+                <button onclick="nextQuestion(3)">Algunas veces, pero no vi la diferencia que esperaba.</button>
+                <button onclick="nextQuestion(3)">No, estoy empezando a buscar una solución ahora.</button>
+            </div>
+        </div>
+
+        <div id="question-3" class="question">
+            <h2>Pensando en tu rutina de hoy, ¿qué es lo que más te molesta?</h2>
+            <div class="answers">
+                <button onclick="nextQuestion(4)">La falta de energía y el cansancio constante.</button>
+                <button onclick="nextQuestion(4)">La sensación de hinchazón y la incomodidad con la ropa.</button>
+                <button onclick="nextQuestion(4)">La pelea con el espejo y la baja autoestima.</button>
+                <button onclick="nextQuestion(4)">La ansiedad que a menudo interfiere en mis elecciones.</button>
+            </div>
+        </div>
+
+        <div id="question-4" class="question">
+            <h2>Imagina que finalmente alcanzas tu objetivo de bienestar. ¿Qué cambiaría en tu vida?</h2>
+            <div class="answers">
+                <button onclick="nextQuestion(5)">Tendría mucha más confianza para usar la ropa que realmente me gusta.</button>
+                <button onclick="nextQuestion(5)">Tendría más disposición para disfrutar el tiempo con mi familia y amigos.</button>
+                <button onclick="nextQuestion(5)">Me sentiría más libre, feliz y en paz con mi propio cuerpo.</button>
+                <button onclick="nextQuestion(5)">Todas las opciones anteriores.</button>
+            </div>
+        </div>
+
+        <div id="question-5" class="question">
+            <h2>Para lograr esta transformación, ¿qué tipo de enfoque sería ideal para ti?</h2>
+            <div class="answers">
+                <button onclick="showResults()">Un método simple y natural, que pueda seguir desde casa.</button>
+                <button onclick="showResults()">Una rutina fácil, sin reglas complicadas ni restricciones.</button>
+                <button onclick="showResults()">Algo que se ajuste a mi día a día, sin tomar mucho tiempo.</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="results-container">
+        <div id="loading-text">Analizando tus respuestas...</div>
+        
+        <div id="final-content">
+            <h2>¡Todo listo!</h2>
+            <p>Basado en lo que nos has contado, hemos preparado una presentación especial y gratuita que muestra un ritual simple que puede ayudarte a alcanzar tu objetivo de bienestar. <strong>Mira el video a continuación con atención.</strong></p>
+            <div class="video-wrapper">
+                <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js", s.async=!0,document.head.appendChild(s); </script> <div id="ifr_68d1dbe3cb9a4bf4b8994a49_wrapper" style="margin: 0 auto; width: 100%; "> <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_68d1dbe3cb9a4bf4b8994a49_aspect"> <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_68d1dbe3cb9a4bf4b8994a49" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/68d1dbe3cb9a4bf4b8994a49/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe> </div> </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Lógica do Quiz ---
+
+        let currentQuestion = 1;
+
+        function nextQuestion(questionNumber) {
+            // Esconde a pergunta atual
+            document.getElementById('question-' + currentQuestion).classList.remove('active');
+
+            // Mostra a próxima pergunta
+            document.getElementById('question-' + questionNumber).classList.add('active');
+
+            // Atualiza o número da pergunta atual
+            currentQuestion = questionNumber;
+        }
+
+        function showResults() {
+            // Esconde o container do quiz
+            document.getElementById('quiz-container').style.display = 'none';
+            
+            // Mostra o container de resultados
+            document.getElementById('results-container').style.display = 'block';
+
+            // Simula um tempo de "análise" para criar antecipação
+            setTimeout(() => {
+                // Esconde o texto "Analisando..."
+                document.getElementById('loading-text').style.display = 'none';
+
+                // Mostra o conteúdo final com o vídeo
+                document.getElementById('final-content').style.display = 'block';
+
+            }, 2000); // Atraso de 2 segundos (2000 milissegundos)
+        }
+    </script>
+
+</body>
+</html>
