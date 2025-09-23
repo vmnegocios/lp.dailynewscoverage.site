@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Codes - Members Area</title> <!-- Updated tab title -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Sacred Codes</h1> <!-- Updated and centered header title via existing CSS -->
+    </header>
+
+    <div class="container">
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Modules will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Module data - Combined ebooks and videos
+        const modulos = [
+            {
+                nome: "The Sacred Codes of Lour",
+                tipo: "Combined",
+                imagem: "img/ebook_sacred_codes.png", 
+                ebook: {
+                    title: "The Sacred Codes of Lour",
+                    src: "https://the-sacred-codes-of-lour-muz67jk.gamma.site/"
+                },
+                video: {
+                    title: "Law of Attraction Fundamentals",
+                    src: "https://www.youtube.com/watch?v=lWXuaffZ9_c"
+                }
+            },
+            {
+                nome: "Module 1: The Central Code",
+                tipo: "Combined",
+                imagem: "img/ebook_module1.png", 
+                ebook: {
+                    title: "Module 1: The Central Code",
+                    src: "https://module-1-the-central-cod-dl4pgbu.gamma.site/"
+                },
+                video: {
+                    title: "Manifestation Techniques",
+                    src: "https://www.youtube.com/watch?v=Y07hiMjHtPY"
+                }
+            },
+            {
+                nome: "Module 2: The Divine Heal",
+                tipo: "Combined",
+                imagem: "img/ebook_module2.png", 
+                ebook: {
+                    title: "Module 2: The Divine Heal",
+                    src: "https://module-2-the-divine-heal-otv0wuo.gamma.site/"
+                },
+                video: {
+                    title: "Visualization Mastery",
+                    src: "https://www.youtube.com/watch?v=MuiU5EZQ-3s"
+                }
+            },
+            {
+                nome: "Module 3: The Code of Abu",
+                tipo: "Combined",
+                imagem: "img/ebook_module3.png", 
+                ebook: {
+                    title: "Module 3: The Code of Abu",
+                    src: "https://module-3-the-code-of-abu-9daq89j.gamma.site/"
+                },
+                video: {
+                    title: "Energy Alignment",
+                    src: "https://www.youtube.com/watch?v=IMGdn96jgtk"
+                }
+            },
+            {
+                nome: "Module 4: The Code of Ang",
+                tipo: "Combined",
+                imagem: "img/ebook_module4.png", 
+                ebook: {
+                    title: "Module 4: The Code of Ang",
+                    src: "https://module-4-the-code-of-ang-p2jm6vl.gamma.site/"
+                },
+                video: {
+                    title: "Abundance Mindset",
+                    src: "https://www.youtube.com/watch?v=GP-CYpALnvE"
+                }
+            },
+            {
+                nome: "Module 5: The Code of Har",
+                tipo: "Combined",
+                imagem: "img/ebook_module5.png", 
+                ebook: {
+                    title: "Module 5: The Code of Har",
+                    src: "https://module-5-the-code-of-har-82ctnnc.gamma.site/"
+                },
+                video: {
+                    title: "Advanced Manifestation",
+                    src: "https://www.youtube.com/watch?v=Fv0jz-cqFGk"
+                }
+            }
+            // Add more modules here as needed
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modulesGrid = document.getElementById("modulesGrid");
+            if (modulesGrid) {
+                modulos.forEach(modulo => {
+                    const moduleCard = document.createElement("div");
+                    moduleCard.classList.add("module-card");
+
+                    let link = "modulo.html";
+                    let params = `name=${encodeURIComponent(modulo.nome)}`;
+
+                    if (modulo.tipo === "Combined") {
+                        params += `&type=combined&ebook=${encodeURIComponent(JSON.stringify(modulo.ebook))}&video=${encodeURIComponent(JSON.stringify(modulo.video))}`;
+                    } else if (modulo.tipo === "Ebook") {
+                        params += `&type=ebook&src=${encodeURIComponent(modulo.src)}`;
+                    } else if (modulo.tipo === "Video Classes") {
+                        params += `&type=video&videos=${encodeURIComponent(JSON.stringify(modulo.videos))}`;
+                    }
+
+                    moduleCard.innerHTML = `
+                        <div class="module-image-container">
+                            <img src="${modulo.imagem || "img/placeholder.svg"}" alt="${modulo.nome}">
+                        </div>
+                        <h3>${modulo.nome}</h3>
+                        <a href="${link}?${params}" class="btn-access">Access Content</a>
+                    `;
+                    modulesGrid.appendChild(moduleCard);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
