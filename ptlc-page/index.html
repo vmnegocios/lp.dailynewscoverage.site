@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sacred Codes of Lourdes - A Special Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET AND GENERAL SETTINGS --- */
+        :root {
+            --bg-color: #FFFFFF;
+            --bg-light-gray: #F8F9FA;
+            --text-color: #333333;
+            --primary-color: #2E5C8A; /* Serene Blue */
+            --cta-color: #28a745; /* Hope Green */
+            --cta-hover-color: #218838;
+            --footer-bg: #212529;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- VSL (MAIN SECTION) --- */
+        .vsl-section {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .vsl-section h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+        .vsl-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .video-container iframe, 
+        .video-container video,
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        /* --- CALL TO ACTION (CTA) BUTTON --- */
+        .cta-button {
+            margin-top: 15px;            
+			display: inline-block;
+            background-color: var(--cta-color);
+            color: #fff;
+            padding: 20px 45px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.5);
+            text-transform: uppercase;
+        }
+        .cta-button:hover {
+			background-color: var(--cta-hover-color);
+            transform: translateY(-3px);
+        }
+        .cta-subtext {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* --- OFFER SECTION --- */
+        #oferta {
+            background-color: var(--bg-light-gray);
+        }
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        .offer-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .offer-card p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* --- GUARANTEE SECTION --- */
+        .guarantee-layout {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .guarantee-seal {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            color: var(--primary-color);
+        }
+        .guarantee-text {
+            text-align: left;
+        }
+
+        /* --- FAQ SECTION --- */
+        #faq {
+            background-color: var(--bg-light-gray);
+        }
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+            text-align: left;
+        }
+        .faq-question {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            padding-top: 15px;
+            max-height: 300px;
+        }
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        /* --- FOOTER SECTION --- */
+        .footer {
+            background-color: var(--footer-bg);
+            color: #ccc;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer .legal-notice {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .cta-button { font-size: 1.2rem; padding: 18px 35px; }
+            .guarantee-layout { flex-direction: column; text-align: center; }
+            .guarantee-text { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="vsl-section">
+        <div class="container">
+            <h1>Awaken Harmony and Well-being in Your Life.</h1>
+            <p>Watch the short presentation below to discover the teachings that can transform your inner journey.</p>
+            <vturb-smartplayer id="vid-68d2f8b2ca0420737cbfb03a" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/68d2f8b2ca0420737cbfb03a/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+            <a href="#" class="cta-button">YES, I WANT TO SECURE MY ACCESS NOW!</a>
+            <p class="cta-subtext">Secure Payment | Instant Access | 60-Day Guarantee</p>
+        </div>
+    </section>
+
+    <section id="oferta">
+        <div class="container">
+            <h2>What You Will Receive Today</h2>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <h3>"The Sacred Codes of Lourdes" Guide</h3>
+                    <p>Complete access to the teachings for realigning your energy and connecting with your inner strength.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>BONUS: The 7 Signs</h3>
+                    <p>A guide to recognizing the synchronicities and signs the universe sends your way.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>BONUS: Energetic Shielding</h3>
+                    <p>Powerful practices to protect your energy from negative influences in your daily life.</p>
+                </div>
+                <div class="offer-card">
+                    <h3>BONUS: Prosperous Mindset</h3>
+                    <p>A simple ritual to cultivate a mindset of abundance and gratitude.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="garantia">
+        <div class="container guarantee-layout">
+            <div class="guarantee-seal">
+                <svg xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+            </div>
+            <div class="guarantee-text">
+                <h3>Your Journey is 100% Risk-Free</h3>
+                <p>I have so much faith in the transformative power of these teachings that I offer an Ironclad 60-Day Guarantee. You have six full months to explore all the material. If, for any reason, you don't feel a positive change in your life, just send me a single email, and I will refund 100% of your investment, no questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">How does access work?</div>
+                <div class="faq-answer">
+                    <p>Access is 100% digital and immediate. After your payment is confirmed, you will receive an email with all the instructions to access the guide and the bonuses.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long do I have access?</div>
+                <div class="faq-answer">
+                    <p>You have lifetime access to the material. You can study at your own pace, whenever and wherever you want.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What if I don't like it?</div>
+                <div class="faq-answer">
+                    <p>Your risk is zero. If for any reason you are not satisfied within the next 60 days, simply request a refund, and we will return 100% of the amount paid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 The Sacred Codes of Lourdes - All rights reserved.</p>
+            <p>
+                <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+            </p>
+            <p class="legal-notice">
+                This product does not guarantee the achievement of results. Any reference to the performance of a strategy should not be interpreted as a guarantee of results. Individual results may vary. This content is not a substitute for professional medical, psychological, legal, or financial advice.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for the FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
