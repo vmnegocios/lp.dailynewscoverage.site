@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superbrain</title>
+    <style>
+        /* Google Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* VSL (Video) Section */
+        .vsl-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Call to Action (CTA) Section */
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #27ae60;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #229954;
+            transform: translateY(-3px);
+        }
+
+        .cta-subtext {
+            margin-top: 15px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .features-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .features-list li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            border-radius: 4px;
+        }
+
+        .features-list li::before {
+            content: '✔';
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            border: 2px dashed #2c3e50;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .guarantee-section h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+
+        .guarantee-section p {
+            max-width: 600px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        .footer .disclaimer {
+            font-size: 0.8rem;
+            color: #bdc3c7;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+        
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Superbrain</h1>
+            <p>The Method to Strengthen Your Mental Clarity and Daily Focus</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="vsl-section">
+            <vturb-smartplayer id="vid-68bdf2b460f3aa03c96f30e2" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7ee76c7b-b701-481f-b973-2b478faae041/players/68bdf2b460f3aa03c96f30e2/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+        </section>
+
+        <section class="cta-section">
+            <a href="LINKCHECKOUTAQUI" class="cta-button">GET IMMEDIATE ACCESS TO THE METHOD</a>
+            <p class="cta-subtext">100% Digital Access | Secure Purchase | 60-Day Unconditional Guarantee</p>
+        </section>
+
+        <section class="features-section">
+            <h2>What you get with access to Superbrain:</h2>
+            <ul class="features-list">
+                <li>The complete method, with a detailed step-by-step guide to apply in your daily life.</li>
+                <li>Simple techniques to exercise and strengthen your ability to focus and concentrate.</li>
+                <li>Immediate and lifetime access to all content through our members' area.</li>
+                <li>Principles of mental resilience to cope with the stress of modern life.</li>
+                <li>Exclusive support to answer all your questions about the method.</li>
+                <li>A 60-Day Unconditional Guarantee for you to try it with zero risk.</li>
+            </ul>
+        </section>
+
+        <section class="guarantee-section">
+            <h3>Your Satisfaction or Your Money Back</h3>
+            <p>We have complete confidence in the Superbrain method. That's why we offer a 60-day unconditional guarantee. If, for any reason, you're not satisfied with the content, just send us a single email, and we will refund 100% of your investment. It's that simple. The risk is entirely on us.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact</a>
+        </div>
+
+        <p class="disclaimer">
+            <strong>DISCLAIMER:</strong> This product does not guarantee results. Any reference to the performance of a strategy should not be interpreted as a guarantee of results. Superbrain is an educational program focused on wellness and personal development. The information provided on this page does not substitute for professional medical advice. Always consult a healthcare professional to address matters concerning your health. Results may vary from person to person and depend on individual effort in applying the method.
+        </p>
+        
+        <p class="copyright">
+            &copy; 2025 Superbrain. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
